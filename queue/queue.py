@@ -1,5 +1,5 @@
 class Queue:
-  def __init__(self, cap=10):
+  def __init__(self, cap=3):
     self._front=0
     self._rear=-1
     self._a=[None for _ in range(cap)]
@@ -24,12 +24,22 @@ class Queue:
     temp=self._a[self._front]
     self._a=ar
     return temp
+  def is_empty(self):
+      if self._front is None:
+        return True
+      return False
+
+  def is_full(self):
+      if self._rear is not None:
+        if self._front+1==self.size:
+          return True
+      return False
 queue=Queue()
 queue.enqueue(10)
 queue.enqueue(20)
 queue.enqueue(30)
 queue.enqueue(40)
+queue.enqueue(50)
 print(queue.dequeue())
-queue.enqueue(40)
 print(queue.peek())
 print(queue.rear())
